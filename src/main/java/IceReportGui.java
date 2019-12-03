@@ -10,16 +10,25 @@ public class IceReportGui extends JFrame{
     private JTextField hoursTextField;
     private JTextField dateTextField;
     private JPanel mainPanel;
+    private JList iceList;
+    private JButton addButton;
+    private JButton saveAndQuitButton;
     private Controller controller;
     private DefaultListModel<IceSheet> iceListModel;
 
     IceReportGui(Controller controller){
         this.controller = controller;
         iceListModel = new DefaultListModel<>();
+        iceList.setModel(iceListModel);
+        addButtonAction();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setContentPane(mainPanel);
         pack();
         setVisible(true);
+    }
+
+    private void addButtonAction() {
+
     }
 
 }

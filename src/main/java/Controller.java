@@ -1,3 +1,8 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class Controller {
     private IceReportGui gui;
     private IceDB db;
@@ -11,4 +16,9 @@ public class Controller {
         gui = new IceReportGui(this);
 
     }
+
+    String addICEToDatabase(IceSheet ice){
+        return db.addToIceDb(ice);
+    }
+
 }

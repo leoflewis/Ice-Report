@@ -54,6 +54,29 @@ public class IceSheet {
         this.address = address;
     }
 
+    /**
+     * Overloaded constructor with all option to add all other fields
+     * @param name
+     * @param iceQuality
+     * @param address
+     * @param netStatus
+     * @param waterSource
+     * @param warmingHouse
+     * @param hours
+     * @param additionalInfo
+     * @param date
+     */
+    public IceSheet(String name, int iceQuality, String address, String netStatus, String waterSource, boolean warmingHouse, String hours, String additionalInfo, Date date){
+        this.name = name;
+        this.iceQuality = iceQuality;
+        this.netStatus = netStatus;
+        this.waterSource = waterSource;
+        this.warmingHouse = warmingHouse;
+        this.hours = hours;
+        this.additionalInfo = additionalInfo;
+        this.reportDate = date;
+    }
+
     public String getName() {
         return name;
     }
@@ -124,5 +147,9 @@ public class IceSheet {
 
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
+    }
+
+    public String toString(){
+        return this.name + " " + this.address + " " + this.iceQuality + " " + this.reportDate;
     }
 }

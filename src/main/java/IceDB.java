@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class IceDB {
     private static final String DB_CONNECTION_URL =  "jdbc:sqlite:ice.sqlite";
@@ -17,6 +14,7 @@ public class IceDB {
     private static final String ADDI_COL = "additional";
     static final String OK = "ok";
     static final String DUPLICATE = "Duplicate ice name";
+    static final int SQLITE_DUPLICATE_PRIMARY_KEY_CODE = 19;
 
     IceDB(){
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); Statement statement = conn.createStatement()){
@@ -25,6 +23,29 @@ public class IceDB {
             statement.executeUpdate(createTableSQL);
         } catch (SQLException sqle) {
             throw new  RuntimeException(sqle);
+        }
+    }
+
+    public String addToIceDb(IceSheet ice){
+        String addIceSQL = "INSERT INTO ice VALUES(?,?,?,?,?,?,?,?,?)";
+        try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); PreparedStatement addICE = conn.prepareStatement(addIceSQL)){
+            addICE.setString(1, ice.getName());
+            addICE.setBoolean(2, ice.getWarmingHouse());
+            addICE.setString(3, ice.getNetStatus());
+            addICE.setString(4, ice.getWaterSource());
+            addICE.setDouble(5, ice.getIceQuality());
+            addICE.setString(6, ice.getAddress());
+            addICE.setString(7, ice.getHours());
+            addICE.setDate(8, (Date) ice.getReportDate());
+            addICE.setString(9, ice.getAdditionalInfo());
+            addICE.execute();
+            return OK;
+        } catch (SQLException sqle){
+            if (sqle.getErrorCode() == SQLITE_DUPLICATE_PRIMARY_KEY_CODE){
+                return DUPLICATE;
+            } else {
+                throw new RuntimeException(sqle);
+            }
         }
     }
 }
