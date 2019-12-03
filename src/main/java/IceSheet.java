@@ -42,6 +42,18 @@ public class IceSheet {
      */
     private String additionalInfo;
 
+    /**
+     * The minimum needed for an Ice Sheet
+     * @param name
+     * @param iceQuality
+     * @param address
+     */
+    public IceSheet(String name, int iceQuality, String address){
+        this.name = name;
+        this.iceQuality = iceQuality;
+        this.address = address;
+    }
+
     public String getName() {
         return name;
     }

@@ -9,4 +9,6 @@ public class IceReportGui {
     private JTextField addyTextField1;
     private JTextField hoursTextField;
     private JTextField dateTextField;
+
+
 }
