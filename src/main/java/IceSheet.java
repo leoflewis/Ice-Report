@@ -20,10 +20,7 @@ public class IceSheet {
      * where the ice comes from
      */
     private String waterSource;
-    /**
-     * number of nets at the ice sheet
-     */
-    private int numberNets;
+
     /**
      * number 1-10 representing quality of the ice
      */
@@ -75,14 +72,6 @@ public class IceSheet {
 
     public void setWaterSource(String waterSource) {
         this.waterSource = waterSource;
-    }
-
-    public int getNumberNets() {
-        return numberNets;
-    }
-
-    public void setNumberNets(int numberNets) {
-        this.numberNets = numberNets;
     }
 
     public int getIceQuality() {
