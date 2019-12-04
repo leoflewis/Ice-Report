@@ -17,8 +17,8 @@ public class Controller {
 
     private void startApp() {
         db = new IceDB();
-        gui = new IceReportGui(this);
         List<IceSheet> list = db.fetchAllRecords();
+        gui = new IceReportGui(this);
         gui.setListData(list);
     }
 

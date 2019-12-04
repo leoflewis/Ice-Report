@@ -25,7 +25,7 @@ public class IceReportGui extends JFrame{
     private DefaultListModel<IceSheet> iceListModel;
 
     /**
-     * this method contructs the gui form
+     * this method constructs the gui form
      */
     IceReportGui(Controller controller){
         qualityComboBox.addItem(1);
@@ -50,6 +50,9 @@ public class IceReportGui extends JFrame{
         setVisible(true);
     }
 
+    /**
+     * right lick pop delete menu for the ice list
+     */
     private void rightClick(){
         JPopupMenu menu = new JPopupMenu();
         JMenuItem delete = new JMenuItem("Delete?");
@@ -92,6 +95,8 @@ public class IceReportGui extends JFrame{
     private void delete() {
         IceSheet ice = (IceSheet) iceList.getSelectedValue();
         controller.deleteIceFromDb(ice);
+        List<IceSheet> list = controller.getAllData();
+        setListData(list);
     }
 
 
@@ -151,6 +156,8 @@ public class IceReportGui extends JFrame{
                     hoursTextField.setText("");
                     additionalInfoTextField.setText("");
                     dateTextField.setText("");
+                    List<IceSheet> list = controller.getAllData();
+                    setListData(list);
                 }
             }
         });
