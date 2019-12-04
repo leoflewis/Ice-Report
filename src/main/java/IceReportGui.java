@@ -62,6 +62,9 @@ public class IceReportGui extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 int selection = iceList.locationToIndex(e.getPoint());
+                if(selection < 0){
+                    errorMessage("Select an Ice Sheet");
+                }
                 iceList.setSelectedIndex(selection);
             }
             @Override
@@ -94,7 +97,10 @@ public class IceReportGui extends JFrame{
      */
     private void delete() {
         IceSheet ice = (IceSheet) iceList.getSelectedValue();
-        controller.deleteIceFromDb(ice);
+        String s = controller.deleteIceFromDb(ice);
+        if(s.equals("NullPointerException")){
+            errorMessage("Select an item to delete");
+        }
         List<IceSheet> list = controller.getAllData();
         setListData(list);
     }
@@ -149,13 +155,13 @@ public class IceReportGui extends JFrame{
                 }
                 String result = controller.addICEToDatabase(iceSheetRecord);
                 if (result.equals(IceDB.OK)){
-                    nameTextField.setText("");
-                    addyTextField1.setText("");
-                    netTextArea.setText("");
-                    waterTextField.setText("");
-                    hoursTextField.setText("");
-                    additionalInfoTextField.setText("");
-                    dateTextField.setText("");
+                    nameTextField.setText("Name (required)");
+                    addyTextField1.setText("Address (required)");
+                    netTextArea.setText("What kind of nets and how many are available? (optional)");
+                    waterTextField.setText("Water Source (optional)");
+                    hoursTextField.setText("Hours lights are on and warming house is open (optional)");
+                    additionalInfoTextField.setText("Additional Info (optional)");
+                    dateTextField.setText("Date Skated (required)");
                     List<IceSheet> list = controller.getAllData();
                     setListData(list);
                 }

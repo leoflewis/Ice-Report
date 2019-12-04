@@ -68,9 +68,13 @@ public class IceDB {
     public String deleteFromDB(IceSheet ice){
         String deleteIceSQL = "DELETE FROM ice WHERE name LIKE (?)";
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); PreparedStatement deleteICE = conn.prepareStatement(deleteIceSQL)){
-            deleteICE.setString(1, ice.getName());
-            deleteICE.execute();
-            return OK;
+            try {
+                deleteICE.setString(1, ice.getName());
+                deleteICE.execute();
+                return OK;
+            } catch (NullPointerException p){
+                return "NullPointerException";
+            }
         } catch (SQLException e) {
             if (e.getErrorCode() == SQLITE_DUPLICATE_PRIMARY_KEY_CODE){
                 return DUPLICATE;
