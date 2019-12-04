@@ -60,7 +60,6 @@ public class IceDB {
         }
     }
 
-
     /**
      * method to delete item from db
      * @return

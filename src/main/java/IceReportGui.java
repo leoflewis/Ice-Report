@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -107,7 +108,6 @@ public class IceReportGui extends JFrame{
         setListData(list);
     }
 
-
     /**
      * save and quit button action listener
      */
@@ -127,7 +127,16 @@ public class IceReportGui extends JFrame{
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                List<IceSheet> list = controller.getAllData();
+                List<String> names = new ArrayList<>();
+                for(IceSheet ice : list){
+                    names.add(ice.getName());
+                }
                 String iceName = nameTextField.getText();
+                if(names.contains(iceName)){
+                    errorMessage("Name already exists in Ice Report, delete and try again");
+                    return;
+                }
                 if(iceName.isEmpty() || iceName.equals("Name (required)")){
                     errorMessage("Enter a name for ice sheet");
                     return;
@@ -164,7 +173,7 @@ public class IceReportGui extends JFrame{
                     hoursTextField.setText("Hours lights are on and warming house is open (optional)");
                     additionalInfoTextField.setText("Additional Info (optional)");
                     dateTextField.setText("Date Skated (required)");
-                    List<IceSheet> list = controller.getAllData();
+                    list = controller.getAllData();
                     setListData(list);
                 }
             }
