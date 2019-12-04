@@ -91,7 +91,7 @@ public class IceReportGui extends JFrame{
      */
     private void delete() {
         IceSheet ice = (IceSheet) iceList.getSelectedValue();
-        String result = controller.deleteIceFromDb(ice);
+        controller.deleteIceFromDb(ice);
     }
 
 

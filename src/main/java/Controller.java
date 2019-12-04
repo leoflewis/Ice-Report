@@ -30,7 +30,7 @@ public class Controller {
         return db.fetchAllRecords();
     }
 
-    String deleteIceFromDb(IceSheet ice){
-        return db.deleteFromDB(ice);
+    void deleteIceFromDb(IceSheet ice){
+        db.deleteFromDB(ice);
     }
 }
