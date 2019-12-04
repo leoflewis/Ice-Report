@@ -36,7 +36,7 @@ public class IceSheet {
     /**
      * date user writes report
      */
-    private Date reportDate;
+    private String reportDate;
     /**
      * space for additional info
      */
@@ -66,7 +66,7 @@ public class IceSheet {
      * @param additionalInfo
      * @param date
      */
-    public IceSheet(String name, int iceQuality, String address, String netStatus, String waterSource, boolean warmingHouse, String hours, String additionalInfo, Date date){
+    public IceSheet(String name, int iceQuality, String address, String netStatus, String waterSource, boolean warmingHouse, String hours, String additionalInfo, String date){
         this.name = name;
         this.iceQuality = iceQuality;
         this.netStatus = netStatus;
@@ -75,8 +75,12 @@ public class IceSheet {
         this.hours = hours;
         this.additionalInfo = additionalInfo;
         this.reportDate = date;
+        this.address = address;
     }
 
+    /**
+     * methods to get and set al instance variables of an ice sheet
+     */
     public String getName() {
         return name;
     }
@@ -133,11 +137,11 @@ public class IceSheet {
         this.hours = hours;
     }
 
-    public Date getReportDate() {
+    public String getReportDate() {
         return reportDate;
     }
 
-    public void setReportDate(Date reportDate) {
+    public void setReportDate(String reportDate) {
         this.reportDate = reportDate;
     }
 
@@ -150,6 +154,6 @@ public class IceSheet {
     }
 
     public String toString(){
-        return this.name + " " + this.address + " " + this.iceQuality + " " + this.reportDate;
+        return this.name + " , " + this.address + " , Quality: " + this.iceQuality + " , Date Skated: " + this.reportDate;
     }
 }

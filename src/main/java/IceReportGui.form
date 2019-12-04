@@ -28,7 +28,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="What kind of nets and how many are available?"/>
+          <text value="What kind of nets and how many are available? (optional)"/>
         </properties>
       </component>
       <component id="6c690" class="javax.swing.JTextField" binding="waterTextField">
@@ -38,7 +38,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Water Source"/>
+          <text value="Water Source (optional)"/>
         </properties>
       </component>
       <component id="39f17" class="javax.swing.JTextField" binding="nameTextField">
@@ -48,7 +48,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Name"/>
+          <text value="Name (required)"/>
         </properties>
       </component>
       <component id="74450" class="javax.swing.JComboBox" binding="qualityComboBox">
@@ -64,7 +64,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Address"/>
+          <text value="Address (required)"/>
         </properties>
       </component>
       <component id="66e09" class="javax.swing.JTextField" binding="hoursTextField">
@@ -74,7 +74,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Hours lights are on and warming house is open"/>
+          <text value="Hours lights are on and warming house is open (optional)"/>
         </properties>
       </component>
       <component id="30f52" class="javax.swing.JTextField" binding="dateTextField">
@@ -84,7 +84,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Date Skated"/>
+          <text value="Date Skated (required)"/>
         </properties>
       </component>
       <scrollpane id="d9fe3">
@@ -114,6 +114,16 @@
         </constraints>
         <properties>
           <text value="Save and Quit"/>
+        </properties>
+      </component>
+      <component id="1b66e" class="javax.swing.JTextField" binding="additionalInfoTextField" default-binding="true">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Additional Info (optional)"/>
         </properties>
       </component>
     </children>
