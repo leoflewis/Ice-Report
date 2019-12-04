@@ -60,6 +60,10 @@ public class IceDB {
         }
     }
 
+
+    /**
+     * method to delete item from db
+     */
     public static void deleteFromDB(){
         String deleteIceSQL = "DELETE FROM ice WHERE name LIKE ?";
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); PreparedStatement deleteICE = conn.prepareStatement(deleteIceSQL)){
