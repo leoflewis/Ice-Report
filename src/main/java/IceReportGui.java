@@ -21,6 +21,7 @@ public class IceReportGui extends JFrame{
     private JButton addButton;
     private JButton saveAndQuitButton;
     private JTextField additionalInfoTextField;
+    private JTextField netTextField;
     private Controller controller;
     private DefaultListModel<IceSheet> iceListModel;
 
@@ -28,6 +29,7 @@ public class IceReportGui extends JFrame{
      * this method constructs the gui form
      */
     IceReportGui(Controller controller){
+        qualityComboBox.addItem("Choose Ice Quality Score");
         qualityComboBox.addItem(1);
         qualityComboBox.addItem(2);
         qualityComboBox.addItem(3);
@@ -134,7 +136,7 @@ public class IceReportGui extends JFrame{
                 try {
                     quality = Integer.parseInt(String.valueOf(qualityComboBox.getSelectedItem()));
                 } catch (NumberFormatException nfe){
-                    errorMessage("number format exception");
+                    errorMessage("Select a number");
                     return;
                 }
                 String iceAddress = addyTextField1.getText();
@@ -149,7 +151,7 @@ public class IceReportGui extends JFrame{
                 }
                 IceSheet iceSheetRecord;
                 try{
-                    iceSheetRecord = new IceSheet(iceName, quality, iceAddress, netTextArea.getText(), waterTextField.getText(), warmingHouseCheckBox.isSelected(), hoursTextField.getText(), additionalInfoTextField.getText(), dateTextField.getText());
+                    iceSheetRecord = new IceSheet(iceName, quality, iceAddress, netTextField.getText(), waterTextField.getText(), warmingHouseCheckBox.isSelected(), hoursTextField.getText(), additionalInfoTextField.getText(), dateTextField.getText());
                 } catch (Exception ee){
                     iceSheetRecord = new IceSheet(iceName, quality,  iceAddress);
                 }
@@ -157,7 +159,7 @@ public class IceReportGui extends JFrame{
                 if (result.equals(IceDB.OK)){
                     nameTextField.setText("Name (required)");
                     addyTextField1.setText("Address (required)");
-                    netTextArea.setText("What kind of nets and how many are available? (optional)");
+                    netTextField.setText("What kind of nets and how many are available? (optional)");
                     waterTextField.setText("Water Source (optional)");
                     hoursTextField.setText("Hours lights are on and warming house is open (optional)");
                     additionalInfoTextField.setText("Additional Info (optional)");
