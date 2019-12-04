@@ -29,4 +29,8 @@ public class Controller {
     List<IceSheet> getAllData(){
         return db.fetchAllRecords();
     }
+
+    String deleteIceFromDb(IceSheet ice){
+        return db.deleteFromDB(ice);
+    }
 }

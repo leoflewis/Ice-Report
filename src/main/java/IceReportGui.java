@@ -55,12 +55,6 @@ public class IceReportGui extends JFrame{
         JMenuItem delete = new JMenuItem("Delete?");
         menu.add(delete);
         iceList.setComponentPopupMenu(menu);
-        delete.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                delete();
-            }
-        });
         iceList.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -84,13 +78,20 @@ public class IceReportGui extends JFrame{
 
             }
         });
+        delete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                delete();
+            }
+        });
     }
 
     /**
      * method to delete an item from list
      */
     private void delete() {
-        IceDB.deleteFromDB();
+        IceSheet ice = (IceSheet) iceList.getSelectedValue();
+        String result = controller.deleteIceFromDb(ice);
     }
 
 

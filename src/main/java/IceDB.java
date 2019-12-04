@@ -63,13 +63,20 @@ public class IceDB {
 
     /**
      * method to delete item from db
+     * @return
      */
-    public static void deleteFromDB(){
-        String deleteIceSQL = "DELETE FROM ice WHERE name LIKE ?";
+    public String deleteFromDB(IceSheet ice){
+        String deleteIceSQL = "DELETE FROM ice WHERE name LIKE (?)";
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); PreparedStatement deleteICE = conn.prepareStatement(deleteIceSQL)){
-           // deleteICE.setString(name);
+            deleteICE.setString(1, ice.getName());
+            deleteICE.execute();
+            return OK;
         } catch (SQLException e) {
-            e.printStackTrace();
+            if (e.getErrorCode() == SQLITE_DUPLICATE_PRIMARY_KEY_CODE){
+                return DUPLICATE;
+            } else {
+                throw new RuntimeException(e);
+            }
         }
     }
 
