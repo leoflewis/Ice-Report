@@ -43,28 +43,17 @@ public class IceSheet {
     private String additionalInfo;
 
     /**
-     * The minimum needed for an Ice Sheet
-     * @param name
-     * @param iceQuality
-     * @param address
+     * constructor for minimum required aspects of IceSheet, only used if full IceSheet constructor is not able to be created
      */
-    public IceSheet(String name, int iceQuality, String address){
+    public IceSheet(String name, int iceQuality, String address, String reportDate){
         this.name = name;
         this.iceQuality = iceQuality;
         this.address = address;
+        this.reportDate = reportDate;
     }
 
     /**
-     * Overloaded constructor with all option to add all other fields
-     * @param name
-     * @param iceQuality
-     * @param address
-     * @param netStatus
-     * @param waterSource
-     * @param warmingHouse
-     * @param hours
-     * @param additionalInfo
-     * @param date
+     * IceSheet constructor
      */
     public IceSheet(String name, int iceQuality, String address, String netStatus, String waterSource, boolean warmingHouse, String hours, String additionalInfo, String date){
         this.name = name;
@@ -153,6 +142,9 @@ public class IceSheet {
         this.additionalInfo = additionalInfo;
     }
 
+    /**
+     * toString method for IceSheet class, only displays aspects required in gui form
+     */
     public String toString(){
         return this.name + " , " + this.address + " , Quality: " + this.iceQuality + " , Date Skated: " + this.reportDate;
     }

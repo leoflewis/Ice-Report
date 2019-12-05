@@ -26,10 +26,16 @@ public class Controller {
         return db.addToIceDb(ice);
     }
 
+    /**
+     * calls get data method from database class, produces list of ice sheets
+     */
     List<IceSheet> getAllData(){
         return db.fetchAllRecords();
     }
 
+    /**
+     * calls delete from database method and passes appropriate ice sheet through
+     */
     String deleteIceFromDb(IceSheet ice){
         return db.deleteFromDB(ice);
     }

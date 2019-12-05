@@ -165,7 +165,7 @@ public class IceReportGui extends JFrame{
                 try{
                     iceSheetRecord = new IceSheet(iceName, quality, iceAddress, nets, water, warmingHouseCheckBox.isSelected(), hours, additionalInfo, dateTextField.getText());
                 } catch (Exception ee){
-                    iceSheetRecord = new IceSheet(iceName, quality,  iceAddress);
+                    iceSheetRecord = new IceSheet(iceName, quality,  iceAddress, date);
                 }
                 String result = controller.addICEToDatabase(iceSheetRecord);
                 if (result.equals(IceDB.OK)){
