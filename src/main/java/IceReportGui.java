@@ -159,8 +159,12 @@ public class IceReportGui extends JFrame{
                     return;
                 }
                 IceSheet iceSheetRecord;
+                String nets = netString(netTextField.getText());
+                String water = waterString(waterTextField.getText());
+                String hours = hoursString(hoursTextField.getText());
+                String additionalInfo = addiInfoString(additionalInfoTextField.getText());
                 try{
-                    iceSheetRecord = new IceSheet(iceName, quality, iceAddress, netTextField.getText(), waterTextField.getText(), warmingHouseCheckBox.isSelected(), hoursTextField.getText(), additionalInfoTextField.getText(), dateTextField.getText());
+                    iceSheetRecord = new IceSheet(iceName, quality, iceAddress, nets, water, warmingHouseCheckBox.isSelected(), hours, additionalInfo, dateTextField.getText());
                 } catch (Exception ee){
                     iceSheetRecord = new IceSheet(iceName, quality,  iceAddress);
                 }
@@ -178,6 +182,58 @@ public class IceReportGui extends JFrame{
                 }
             }
         });
+    }
+
+    /**
+     * method to replace default text from gui form with empty string
+     * @param text
+     * @return
+     */
+    private String addiInfoString(String text) {
+        if(text.equals("Additional Info (optional)")){
+            return "";
+        }else {
+            return text;
+        }
+    }
+
+    /**
+     * method to replace default text from gui form with empty string
+     * @param text
+     * @return
+     */
+    private String hoursString(String text) {
+        if(text.equals("Hours (optional)")){
+            return "";
+        }else {
+            return text;
+        }
+    }
+
+    /**
+     * method to replace default text from gui form with empty string
+     * @param text
+     * @return
+     */
+    private String waterString(String text) {
+        if(text.equals("Water Source (optional)")){
+            return "";
+        }else {
+            return text;
+        }
+    }
+
+    /**
+     * method to replace default text from gui form with empty string
+     * @param text
+     * @return
+     */
+    private String netString(String text) {
+        if(text.equals("Net info (optional)")){
+            return "";
+        }else {
+            return text;
+        }
     }
 
     /**

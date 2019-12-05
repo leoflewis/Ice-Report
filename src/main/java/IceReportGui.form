@@ -31,7 +31,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Net info (optional) "/>
+          <text value="Net info (optional)"/>
         </properties>
       </component>
       <component id="96eae" class="javax.swing.JTextField" binding="addyTextField1">
