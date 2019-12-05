@@ -130,10 +130,10 @@ public class IceReportGui extends JFrame{
                 List<IceSheet> list = controller.getAllData();
                 List<String> names = new ArrayList<>();
                 for(IceSheet ice : list){
-                    names.add(ice.getName());
+                    names.add(ice.getName().toLowerCase());
                 }
                 String iceName = nameTextField.getText();
-                if(names.contains(iceName)){
+                if(names.contains(iceName.toLowerCase())){
                     errorMessage("Name already exists in Ice Report, delete and try again");
                     return;
                 }
