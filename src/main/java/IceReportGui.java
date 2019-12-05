@@ -177,6 +177,7 @@ public class IceReportGui extends JFrame{
                     hoursTextField.setText("Hours lights are on and warming house is open (optional)");
                     additionalInfoTextField.setText("Additional Info (optional)");
                     dateTextField.setText("Date Skated (required)");
+                    qualityComboBox.setSelectedIndex(0);
                     list = controller.getAllData();
                     setListData(list);
                 }
