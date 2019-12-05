@@ -10,7 +10,6 @@ import java.util.concurrent.ExecutionException;
 
 public class IceReportGui extends JFrame{
     private JCheckBox warmingHouseCheckBox;
-    private JTextArea netTextArea;
     private JTextField waterTextField;
     private JTextField nameTextField;
     private JComboBox qualityComboBox;
@@ -145,7 +144,7 @@ public class IceReportGui extends JFrame{
                 try {
                     quality = Integer.parseInt(String.valueOf(qualityComboBox.getSelectedItem()));
                 } catch (NumberFormatException nfe){
-                    errorMessage("Select a number");
+                    errorMessage("Select a quality score");
                     return;
                 }
                 String iceAddress = addyTextField1.getText();
@@ -172,9 +171,9 @@ public class IceReportGui extends JFrame{
                 if (result.equals(IceDB.OK)){
                     nameTextField.setText("Name (required)");
                     addyTextField1.setText("Address (required)");
-                    netTextField.setText("What kind of nets and how many are available? (optional)");
+                    netTextField.setText("Net info (optional)");
                     waterTextField.setText("Water Source (optional)");
-                    hoursTextField.setText("Hours lights are on and warming house is open (optional)");
+                    hoursTextField.setText("Hours (optional)");
                     additionalInfoTextField.setText("Additional Info (optional)");
                     dateTextField.setText("Date Skated (required)");
                     qualityComboBox.setSelectedIndex(0);
@@ -187,8 +186,6 @@ public class IceReportGui extends JFrame{
 
     /**
      * method to replace default text from gui form with empty string
-     * @param text
-     * @return
      */
     private String addiInfoString(String text) {
         if(text.equals("Additional Info (optional)")){
@@ -200,8 +197,6 @@ public class IceReportGui extends JFrame{
 
     /**
      * method to replace default text from gui form with empty string
-     * @param text
-     * @return
      */
     private String hoursString(String text) {
         if(text.equals("Hours (optional)")){
@@ -213,8 +208,6 @@ public class IceReportGui extends JFrame{
 
     /**
      * method to replace default text from gui form with empty string
-     * @param text
-     * @return
      */
     private String waterString(String text) {
         if(text.equals("Water Source (optional)")){
@@ -226,8 +219,6 @@ public class IceReportGui extends JFrame{
 
     /**
      * method to replace default text from gui form with empty string
-     * @param text
-     * @return
      */
     private String netString(String text) {
         if(text.equals("Net info (optional)")){
