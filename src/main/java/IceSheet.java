@@ -146,6 +146,13 @@ public class IceSheet {
      * toString method for IceSheet class, only displays aspects required in gui form
      */
     public String toString(){
-        return this.name + " , " + this.address + " , Quality: " + this.iceQuality + " , Date Skated: " + this.reportDate;
+        return this.name + ", " + this.address + ", " + this.iceQuality + ", " + this.reportDate;
+    }
+
+    /**
+     * format for twitter
+     */
+    public String toTwitter(){
+        return "On " + this.reportDate + " " + this.name + " was given a score of " + this.iceQuality + ". " + this.name + " is at " + this.address;
     }
 }
