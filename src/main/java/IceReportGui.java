@@ -58,12 +58,14 @@ public class IceReportGui extends JFrame{
      * right lick pop delete menu for the ice list
      */
     private void rightClick(){
+        //create pop up menu
         JPopupMenu menu = new JPopupMenu();
         JMenuItem delete = new JMenuItem("Delete?");
         menu.add(delete);
         iceList.setComponentPopupMenu(menu);
         iceList.addMouseListener(new MouseListener() {
             @Override
+            //when clicked get index unless invalid
             public void mouseClicked(MouseEvent e) {
                 int selection = iceList.locationToIndex(e.getPoint());
                 if(selection < 0){
@@ -88,9 +90,11 @@ public class IceReportGui extends JFrame{
 
             }
         });
+        //delete menu item
         delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //calls delete method
                 delete();
             }
         });
@@ -101,10 +105,12 @@ public class IceReportGui extends JFrame{
      */
     private void delete() {
         IceSheet ice = (IceSheet) iceList.getSelectedValue();
+        //calls delete from controller
         String s = controller.deleteIceFromDb(ice);
         if(s.equals("NullPointerException")){
             errorMessage("Select an item to delete");
         }
+        //re-set list items
         List<IceSheet> list = controller.getAllData();
         setListData(list);
     }
@@ -116,6 +122,7 @@ public class IceReportGui extends JFrame{
         saveAndQuitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //calls dispose method
                 dispose();
             }
         });
@@ -129,11 +136,14 @@ public class IceReportGui extends JFrame{
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //create list of ice sheets to check for duplicates
                 List<IceSheet> list = controller.getAllData();
                 List<String> names = new ArrayList<>();
                 for(IceSheet ice : list){
                     names.add(ice.getName().toLowerCase());
                 }
+                //get ice sheet values from gui and ensure they are appropriate
+                //optional text fields have their own methods to replace empty text with appropriate text
                 String iceName = nameTextField.getText();
                 if(names.contains(iceName.toLowerCase())){
                     errorMessage("Name already exists in Ice Report, delete and try again");
@@ -160,16 +170,19 @@ public class IceReportGui extends JFrame{
                     errorMessage("Enter date ice was skated");
                     return;
                 }
+                //crate ice sheet with values
                 IceSheet iceSheetRecord;
                 String nets = netString(netTextField.getText());
                 String water = waterString(waterTextField.getText());
                 String hours = hoursString(hoursTextField.getText());
                 String additionalInfo = addiInfoString(additionalInfoTextField.getText());
+                //attempt to create full ice sheet but if that fails create basic ice sheet
                 try{
                     iceSheetRecord = new IceSheet(iceName, quality, iceAddress, nets, water, warmingHouseCheckBox.isSelected(), hours, additionalInfo, dateTextField.getText());
                 } catch (Exception ee){
                     iceSheetRecord = new IceSheet(iceName, quality,  iceAddress, date);
                 }
+                //add ice sheet to database and re-set text in gui form
                 String result = controller.addICEToDatabase(iceSheetRecord);
                 if (result.equals(IceDB.OK)){
                     nameTextField.setText("Name (required)");
@@ -180,6 +193,7 @@ public class IceReportGui extends JFrame{
                     additionalInfoTextField.setText("Additional Info (optional)");
                     dateTextField.setText("Date Skated (required)");
                     qualityComboBox.setSelectedIndex(0);
+                    //update list
                     list = controller.getAllData();
                     setListData(list);
                 }
@@ -235,6 +249,7 @@ public class IceReportGui extends JFrame{
      * this method fills the list in the gui with existing data
      */
     public void setListData(List<IceSheet> data){
+        //updates jlist
         iceListModel.clear();
         if(data != null){
             for(IceSheet ice : data){
