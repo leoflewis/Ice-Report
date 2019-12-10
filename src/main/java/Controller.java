@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,8 +14,9 @@ public class Controller {
 
     private void startApp() {
         db = new IceDB();
-        List<IceSheet> list = db.fetchAllRecords();
+        List<IceSheet> list = sortIceByScore();
         gui = new IceReportGui(this);
+        sortIceByScore();
         gui.setListData(list);
     }
 
@@ -31,6 +29,15 @@ public class Controller {
      */
     List<IceSheet> getAllData(){
         return db.fetchAllRecords();
+    }
+
+    /**
+     * sorts ice sheets by their quality score
+     */
+    List<IceSheet> sortIceByScore(){
+        List<IceSheet> iceSheets = db.fetchAllRecords();
+        Collections.sort(iceSheets);
+        return iceSheets;
     }
 
     /**

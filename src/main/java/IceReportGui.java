@@ -103,7 +103,7 @@ public class IceReportGui extends JFrame{
         if(s.equals("NullPointerException")){
             errorMessage("Select an item to delete");
         }
-        List<IceSheet> list = controller.getAllData();
+        List<IceSheet> list = controller.sortIceByScore();
         setListData(list);
     }
 
@@ -126,7 +126,7 @@ public class IceReportGui extends JFrame{
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<IceSheet> list = controller.getAllData();
+                List<IceSheet> list = controller.sortIceByScore();
                 List<String> names = new ArrayList<>();
                 for(IceSheet ice : list){
                     names.add(ice.getName().toLowerCase());
@@ -177,7 +177,7 @@ public class IceReportGui extends JFrame{
                     additionalInfoTextField.setText("Additional Info (optional)");
                     dateTextField.setText("Date Skated (required)");
                     qualityComboBox.setSelectedIndex(0);
-                    list = controller.getAllData();
+                    list = controller.sortIceByScore();
                     setListData(list);
                 }
             }

@@ -3,7 +3,7 @@ import java.util.Date;
 /**
  * class modeling and outdoor ice sheet
  */
-public class IceSheet {
+public class IceSheet implements Comparable<IceSheet>{
     /**
      * name of ice sheet
      */
@@ -154,5 +154,14 @@ public class IceSheet {
      */
     public String toTwitter(){
         return "On " + this.reportDate + " " + this.name + " was given a score of " + this.iceQuality + ". " + this.name + " is at " + this.address;
+    }
+
+    @Override
+    public int compareTo(IceSheet o) {
+        if(o instanceof IceSheet){
+            IceSheet I = (IceSheet) o;
+            return o.getIceQuality() - this.iceQuality;
+        }
+        return -1;
     }
 }
