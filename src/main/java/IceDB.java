@@ -22,10 +22,13 @@ public class IceDB {
      * creates the database
      */
     IceDB(){
+        //attempt connection
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); Statement statement = conn.createStatement()){
+            //create table in database, ensure required aspects contain valid input
             String createTableSQL = "CREATE TABLE IF NOT EXISTS ice" + "(name TEXT NOT NULL, house BOOLEAN, net TEXT, water TEXT, " +
                     "quality INTEGER NOT NULL CHECK(quality >= 1 AND quality <=10), address TEXT NOT NULL, hours TEXT, date TEXT NOT NULL, additional TEXT)";
             statement.executeUpdate(createTableSQL);
+            //throw exception if connection failed
         } catch (SQLException sqle) {
             throw new  RuntimeException(sqle);
         }
@@ -35,6 +38,7 @@ public class IceDB {
      * adds an ice sheet to the data
      */
     public String addToIceDb(IceSheet ice){
+        //parametrized statement to prevent injection
         String addIceSQL = "INSERT INTO ice VALUES(?,?,?,?,?,?,?,?,?)";
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); PreparedStatement addICE = conn.prepareStatement(addIceSQL)){
             addICE.setString(1, ice.getName());
@@ -61,7 +65,9 @@ public class IceDB {
      * method to delete item from db
      */
     public String deleteFromDB(IceSheet ice){
+        //parameterized statement to prevent injection
         String deleteIceSQL = "DELETE FROM ice WHERE name LIKE (?)";
+        //attempt connection
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); PreparedStatement deleteICE = conn.prepareStatement(deleteIceSQL)){
             try {
                 deleteICE.setString(1, ice.getName());
@@ -70,6 +76,7 @@ public class IceDB {
             } catch (NullPointerException p){
                 return "NullPointerException";
             }
+            //throw exception if connection to database unsuccessful
         } catch (SQLException e) {
             if (e.getErrorCode() == SQLITE_DUPLICATE_PRIMARY_KEY_CODE){
                 return DUPLICATE;
@@ -83,10 +90,14 @@ public class IceDB {
      * this method retrieves ice sheets from the database
      */
     public List<IceSheet> fetchAllRecords() {
+        //empty list
         List<IceSheet> allRecords = new ArrayList<>();
+        //attempt connection
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); Statement statement = conn.createStatement()){
+            //parameterized statement
             String selectAllSQL = "SELECT * FROM ice ORDER BY quality DESC ";
             ResultSet rsALL = statement.executeQuery(selectAllSQL);
+            //get ice sheets from database
             while(rsALL.next()){
                 String name = rsALL.getString(NAME_COL);
                 int quality = (int) rsALL.getDouble(QUALITY_COL);
