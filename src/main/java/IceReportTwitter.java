@@ -3,7 +3,6 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
-import java.util.List;
 
 public class IceReportTwitter {
     Twitter twit = TwitterFactory.getSingleton();

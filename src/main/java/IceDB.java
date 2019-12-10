@@ -5,7 +5,6 @@ import java.util.List;
 
 public class IceDB {
     private static final String DB_CONNECTION_URL =  "jdbc:sqlite:ice.sqlite";
-
     private static final String NAME_COL = "name";
     private static final String HOUSE_COL = "house";
     private static final String NET_COL = "net";
@@ -34,8 +33,6 @@ public class IceDB {
 
     /**
      * adds an ice sheet to the data
-     * @param ice
-     * @return
      */
     public String addToIceDb(IceSheet ice){
         String addIceSQL = "INSERT INTO ice VALUES(?,?,?,?,?,?,?,?,?)";
@@ -62,7 +59,6 @@ public class IceDB {
 
     /**
      * method to delete item from db
-     * @return
      */
     public String deleteFromDB(IceSheet ice){
         String deleteIceSQL = "DELETE FROM ice WHERE name LIKE (?)";
