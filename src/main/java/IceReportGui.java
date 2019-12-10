@@ -4,9 +4,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
+
 
 public class IceReportGui extends JFrame{
     private JCheckBox warmingHouseCheckBox;
@@ -103,7 +102,7 @@ public class IceReportGui extends JFrame{
         if(s.equals("NullPointerException")){
             errorMessage("Select an item to delete");
         }
-        List<IceSheet> list = controller.sortIceByScore();
+        List<IceSheet> list = controller.getAllData();
         setListData(list);
     }
 
@@ -121,12 +120,13 @@ public class IceReportGui extends JFrame{
 
     /**
      * this method adds an icesheet to the list
+     * this method is pretty long because it checks to make sure the entered input is correct
      */
     private void addButtonAction() {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<IceSheet> list = controller.sortIceByScore();
+                List<IceSheet> list = controller.getAllData();
                 List<String> names = new ArrayList<>();
                 for(IceSheet ice : list){
                     names.add(ice.getName().toLowerCase());
@@ -177,7 +177,7 @@ public class IceReportGui extends JFrame{
                     additionalInfoTextField.setText("Additional Info (optional)");
                     dateTextField.setText("Date Skated (required)");
                     qualityComboBox.setSelectedIndex(0);
-                    list = controller.sortIceByScore();
+                    list = controller.getAllData();
                     setListData(list);
                 }
             }
@@ -200,7 +200,7 @@ public class IceReportGui extends JFrame{
      */
     private String hoursString(String text) {
         if(text.equals("Hours (optional)")){
-            return "";
+            return "Hours Unknown";
         }else {
             return text;
         }
@@ -211,7 +211,7 @@ public class IceReportGui extends JFrame{
      */
     private String waterString(String text) {
         if(text.equals("Water Source (optional)")){
-            return "";
+            return "Water source unknown";
         }else {
             return text;
         }
@@ -222,7 +222,7 @@ public class IceReportGui extends JFrame{
      */
     private String netString(String text) {
         if(text.equals("Net info (optional)")){
-            return "";
+            return "Net status unknown.";
         }else {
             return text;
         }

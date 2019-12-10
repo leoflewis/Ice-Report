@@ -89,7 +89,7 @@ public class IceDB {
     public List<IceSheet> fetchAllRecords() {
         List<IceSheet> allRecords = new ArrayList<>();
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); Statement statement = conn.createStatement()){
-            String selectAllSQL = "SELECT * FROM ice";
+            String selectAllSQL = "SELECT * FROM ice ORDER BY quality DESC ";
             ResultSet rsALL = statement.executeQuery(selectAllSQL);
             while(rsALL.next()){
                 String name = rsALL.getString(NAME_COL);

@@ -153,9 +153,12 @@ public class IceSheet implements Comparable<IceSheet>{
      * format for twitter
      */
     public String toTwitter(){
-        return "On " + this.reportDate + " " + this.name + " was given a score of " + this.iceQuality + ". " + this.name + " is at " + this.address;
+        return "On " + this.reportDate + " " + this.name + " was given a score of " + this.iceQuality + ". " + this.name + " is at " + this.address + this.getNetStatus() + " " + this.getHours() + " "  + this.getWaterSource() + " " + this.getAdditionalInfo();
     }
 
+    /**
+     * compares quality score of one ice sheet to another
+     */
     @Override
     public int compareTo(IceSheet o) {
         if(o instanceof IceSheet){

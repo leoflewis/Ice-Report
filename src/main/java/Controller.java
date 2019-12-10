@@ -14,9 +14,8 @@ public class Controller {
 
     private void startApp() {
         db = new IceDB();
-        List<IceSheet> list = sortIceByScore();
+        List<IceSheet> list = getAllData();
         gui = new IceReportGui(this);
-        sortIceByScore();
         gui.setListData(list);
     }
 
@@ -31,14 +30,6 @@ public class Controller {
         return db.fetchAllRecords();
     }
 
-    /**
-     * sorts ice sheets by their quality score
-     */
-    List<IceSheet> sortIceByScore(){
-        List<IceSheet> iceSheets = db.fetchAllRecords();
-        Collections.sort(iceSheets);
-        return iceSheets;
-    }
 
     /**
      * calls delete from database method and passes appropriate ice sheet through
