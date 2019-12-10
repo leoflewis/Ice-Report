@@ -129,7 +129,7 @@ public class IceReportGui extends JFrame{
     }
 
     /**
-     * this method adds an icesheet to the list
+     * this method adds an ice sheet to the list
      * this method is pretty long because it checks to make sure the entered input is correct
      */
     private void addButtonAction() {
