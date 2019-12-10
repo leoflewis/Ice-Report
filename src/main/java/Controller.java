@@ -12,6 +12,9 @@ public class Controller {
         new Controller().startApp();
     }
 
+    /**
+     * method begins application operation
+     */
     private void startApp() {
         db = new IceDB();
         List<IceSheet> list = getAllData();
@@ -19,6 +22,9 @@ public class Controller {
         gui.setListData(list);
     }
 
+    /**
+     * method to control additions to database
+     */
     String addICEToDatabase(IceSheet ice){
         return db.addToIceDb(ice);
     }
