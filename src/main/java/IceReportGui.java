@@ -28,6 +28,7 @@ public class IceReportGui extends JFrame{
      * this method constructs the gui form
      */
     IceReportGui(Controller controller){
+        //set combo box items
         qualityComboBox.addItem("Choose Ice Quality Score");
         qualityComboBox.addItem(1);
         qualityComboBox.addItem(2);
@@ -39,9 +40,11 @@ public class IceReportGui extends JFrame{
         qualityComboBox.addItem(8);
         qualityComboBox.addItem(9);
         qualityComboBox.addItem(10);
+        //set list model
         this.controller = controller;
         iceListModel = new DefaultListModel<>();
         iceList.setModel(iceListModel);
+        //add, save, right click methods for organisation
         addButtonAction();
         saveAndQuitButton();
         rightClick();
