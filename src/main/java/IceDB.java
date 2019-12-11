@@ -16,7 +16,7 @@ public class IceDB {
     private static final String ADDI_COL = "additional";
     static final String OK = "ok";
     static final String DUPLICATE = "Duplicate ice name";
-    static final int SQLITE_DUPLICATE_PRIMARY_KEY_CODE = 19;
+    static final int SQLITE_DUPLICATE_PRIMARY_KEY_CODE = 1;
 
     /**
      * creates the database

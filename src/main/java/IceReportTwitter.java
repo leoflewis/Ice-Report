@@ -12,12 +12,13 @@ public class IceReportTwitter {
 
 
      public static void main(String[] args) {
-         Twitter twitter = null;
+         Twitter twitter;
          try {
              twitter = getTwitterinstance();
+
              Status status = twitter.updateStatus("tweets");
              twitter.tweets().updateStatus("tweet");
-         } catch (TwitterException e) {
+         } catch (IllegalStateException | TwitterException e) {
              e.printStackTrace();
          }
 

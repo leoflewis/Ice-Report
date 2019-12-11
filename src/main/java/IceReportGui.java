@@ -208,7 +208,6 @@ public class IceReportGui extends JFrame{
         });
     }
 
-
     /**
      * method to replace default text from gui form with empty string
      */
@@ -268,11 +267,9 @@ public class IceReportGui extends JFrame{
             }
             @Override
             public void mouseEntered(MouseEvent e) {
-                nameTextField.setText("");
             }
             @Override
             public void mouseExited(MouseEvent e) {
-                nameTextField.setText("Name (required)");
             }
         });
         hoursTextField.addMouseListener(new MouseListener() {
@@ -288,11 +285,9 @@ public class IceReportGui extends JFrame{
             }
             @Override
             public void mouseEntered(MouseEvent e) {
-                hoursTextField.setText("");
             }
             @Override
             public void mouseExited(MouseEvent e) {
-                hoursTextField.setText("Hours (optional)");
             }
         });
         dateTextField.addMouseListener(new MouseListener() {
@@ -308,11 +303,9 @@ public class IceReportGui extends JFrame{
             }
             @Override
             public void mouseEntered(MouseEvent e) {
-                dateTextField.setText("");
             }
             @Override
             public void mouseExited(MouseEvent e) {
-                dateTextField.setText("Date Skated (required)");
             }
         });
         additionalInfoTextField.addMouseListener(new MouseListener() {
@@ -328,11 +321,9 @@ public class IceReportGui extends JFrame{
             }
             @Override
             public void mouseEntered(MouseEvent e) {
-                additionalInfoTextField.setText("");
             }
             @Override
             public void mouseExited(MouseEvent e) {
-                additionalInfoTextField.setText("Additional Info (optional)");
             }
         });
         addyTextField1.addMouseListener(new MouseListener() {
@@ -348,11 +339,9 @@ public class IceReportGui extends JFrame{
             }
             @Override
             public void mouseEntered(MouseEvent e) {
-                addyTextField1.setText("");
             }
             @Override
             public void mouseExited(MouseEvent e) {
-                addyTextField1.setText("Address (required)");
             }
         });
     }
