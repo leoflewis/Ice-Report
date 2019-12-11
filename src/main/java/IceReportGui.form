@@ -80,16 +80,6 @@
           <text value="Warming House"/>
         </properties>
       </component>
-      <component id="6c690" class="javax.swing.JTextField" binding="waterTextField">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Water Source (optional)"/>
-        </properties>
-      </component>
       <component id="1b66e" class="javax.swing.JTextField" binding="additionalInfoTextField" default-binding="true">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -146,6 +136,12 @@
         <properties>
           <text value="Name         Address          Quality         Date Skated"/>
         </properties>
+      </component>
+      <component id="72ed4" class="javax.swing.JComboBox" binding="waterSourceBox">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>

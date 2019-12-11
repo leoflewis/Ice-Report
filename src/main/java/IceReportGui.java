@@ -9,7 +9,6 @@ import java.util.List;
 
 public class IceReportGui extends JFrame{
     private JCheckBox warmingHouseCheckBox;
-    private JTextField waterTextField;
     private JTextField nameTextField;
     private JComboBox qualityComboBox;
     private JTextField addyTextField1;
@@ -21,6 +20,7 @@ public class IceReportGui extends JFrame{
     private JButton saveAndQuitButton;
     private JTextField additionalInfoTextField;
     private JTextField netTextField;
+    private JComboBox waterSourceBox;
     private Controller controller;
     private DefaultListModel<IceSheet> iceListModel;
 
@@ -28,7 +28,7 @@ public class IceReportGui extends JFrame{
      * this method constructs the gui form
      */
     IceReportGui(Controller controller){
-        //set combo box items
+        //set quality combo box items
         qualityComboBox.addItem("Choose Ice Quality Score");
         qualityComboBox.addItem(1);
         qualityComboBox.addItem(2);
@@ -40,6 +40,13 @@ public class IceReportGui extends JFrame{
         qualityComboBox.addItem(8);
         qualityComboBox.addItem(9);
         qualityComboBox.addItem(10);
+        //set water combo box
+        waterSourceBox.addItem("Select water source (optional)");
+        waterSourceBox.addItem("Lake");
+        waterSourceBox.addItem("Pond");
+        waterSourceBox.addItem("Flooded Park");
+        waterSourceBox.addItem("River");
+        waterSourceBox.addItem("Other");
         //set list model
         this.controller = controller;
         iceListModel = new DefaultListModel<>();
@@ -55,7 +62,7 @@ public class IceReportGui extends JFrame{
     }
 
     /**
-     * right lick pop delete menu for the ice list
+     * right click pop delete menu for the ice list
      */
     private void rightClick(){
         //create pop up menu
@@ -173,7 +180,8 @@ public class IceReportGui extends JFrame{
                 //crate ice sheet with values
                 IceSheet iceSheetRecord;
                 String nets = netString(netTextField.getText());
-                String water = waterString(waterTextField.getText());
+                String water = (String) waterSourceBox.getSelectedItem();
+                if(water.equals("Select water source (optional)")){  water = "Water source status unknown"; }
                 String hours = hoursString(hoursTextField.getText());
                 String additionalInfo = addiInfoString(additionalInfoTextField.getText());
                 //attempt to create full ice sheet but if that fails create basic ice sheet
@@ -188,7 +196,7 @@ public class IceReportGui extends JFrame{
                     nameTextField.setText("Name (required)");
                     addyTextField1.setText("Address (required)");
                     netTextField.setText("Net info (optional)");
-                    waterTextField.setText("Water Source (optional)");
+                    waterSourceBox.setSelectedIndex(0);
                     hoursTextField.setText("Hours (optional)");
                     additionalInfoTextField.setText("Additional Info (optional)");
                     dateTextField.setText("Date Skated (required)");
@@ -200,6 +208,7 @@ public class IceReportGui extends JFrame{
             }
         });
     }
+
 
     /**
      * method to replace default text from gui form with empty string
@@ -218,17 +227,6 @@ public class IceReportGui extends JFrame{
     private String hoursString(String text) {
         if(text.equals("Hours (optional)")){
             return "Hours Unknown";
-        }else {
-            return text;
-        }
-    }
-
-    /**
-     * method to replace default text from gui form with empty string
-     */
-    private String waterString(String text) {
-        if(text.equals("Water Source (optional)")){
-            return "Water source unknown";
         }else {
             return text;
         }
