@@ -53,6 +53,7 @@ public class IceReportGui extends JFrame{
         iceList.setModel(iceListModel);
         //add, save, right click methods for organisation
         addButtonAction();
+        emptyText();
         saveAndQuitButton();
         rightClick();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -248,6 +249,112 @@ public class IceReportGui extends JFrame{
      */
     private void errorMessage(String s) {
         JOptionPane.showMessageDialog(IceReportGui.this, s, "error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    /**
+     * this method empties text field when they are clicked
+     */
+    void emptyText(){
+        nameTextField.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                nameTextField.setText("");
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                nameTextField.setText("");
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                nameTextField.setText("Name (required)");
+            }
+        });
+        hoursTextField.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                hoursTextField.setText("");
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                hoursTextField.setText("");
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                hoursTextField.setText("Hours (optional)");
+            }
+        });
+        dateTextField.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                dateTextField.setText("");
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                dateTextField.setText("");
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                dateTextField.setText("Date Skated (required)");
+            }
+        });
+        additionalInfoTextField.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                additionalInfoTextField.setText("");
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                additionalInfoTextField.setText("");
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                additionalInfoTextField.setText("Additional Info (optional)");
+            }
+        });
+        addyTextField1.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                addyTextField1.setText("");
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                addyTextField1.setText("");
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                addyTextField1.setText("Address (required)");
+            }
+        });
     }
 
 }
