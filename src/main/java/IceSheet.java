@@ -15,7 +15,7 @@ public class IceSheet implements Comparable<IceSheet>{
     /**
      * status of nets
      */
-    private String netStatus;
+    private boolean netStatus;
     /**
      * where the ice comes from
      */
@@ -55,7 +55,7 @@ public class IceSheet implements Comparable<IceSheet>{
     /**
      * IceSheet constructor
      */
-    public IceSheet(String name, int iceQuality, String address, String netStatus, String waterSource, boolean warmingHouse, String hours, String additionalInfo, String date){
+    public IceSheet(String name, int iceQuality, String address, boolean netStatus, String waterSource, boolean warmingHouse, String hours, String additionalInfo, String date){
         this.name = name;
         this.iceQuality = iceQuality;
         this.netStatus = netStatus;
@@ -86,11 +86,11 @@ public class IceSheet implements Comparable<IceSheet>{
         this.warmingHouse = warmingHouse;
     }
 
-    public String getNetStatus() {
+    public boolean getNetStatus() {
         return netStatus;
     }
 
-    public void setNetStatus(String netStatus) {
+    public void setNetStatus(boolean netStatus) {
         this.netStatus = netStatus;
     }
 

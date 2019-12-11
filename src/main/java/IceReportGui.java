@@ -19,8 +19,8 @@ public class IceReportGui extends JFrame{
     private JButton addButton;
     private JButton saveAndQuitButton;
     private JTextField additionalInfoTextField;
-    private JTextField netTextField;
     private JComboBox waterSourceBox;
+    private JCheckBox netCheckBox;
     private Controller controller;
     private DefaultListModel<IceSheet> iceListModel;
 
@@ -179,14 +179,13 @@ public class IceReportGui extends JFrame{
                 }
                 //crate ice sheet with values
                 IceSheet iceSheetRecord;
-                String nets = netString(netTextField.getText());
                 String water = (String) waterSourceBox.getSelectedItem();
                 if(water.equals("Select water source (optional)")){  water = "Water source status unknown"; }
                 String hours = hoursString(hoursTextField.getText());
                 String additionalInfo = addiInfoString(additionalInfoTextField.getText());
                 //attempt to create full ice sheet but if that fails create basic ice sheet
                 try{
-                    iceSheetRecord = new IceSheet(iceName, quality, iceAddress, nets, water, warmingHouseCheckBox.isSelected(), hours, additionalInfo, dateTextField.getText());
+                    iceSheetRecord = new IceSheet(iceName, quality, iceAddress, netCheckBox.isSelected(), water, warmingHouseCheckBox.isSelected(), hours, additionalInfo, dateTextField.getText());
                 } catch (Exception ee){
                     iceSheetRecord = new IceSheet(iceName, quality,  iceAddress, date);
                 }
@@ -195,7 +194,6 @@ public class IceReportGui extends JFrame{
                 if (result.equals(IceDB.OK)){
                     nameTextField.setText("Name (required)");
                     addyTextField1.setText("Address (required)");
-                    netTextField.setText("Net info (optional)");
                     waterSourceBox.setSelectedIndex(0);
                     hoursTextField.setText("Hours (optional)");
                     additionalInfoTextField.setText("Additional Info (optional)");
@@ -227,17 +225,6 @@ public class IceReportGui extends JFrame{
     private String hoursString(String text) {
         if(text.equals("Hours (optional)")){
             return "Hours Unknown";
-        }else {
-            return text;
-        }
-    }
-
-    /**
-     * method to replace default text from gui form with empty string
-     */
-    private String netString(String text) {
-        if(text.equals("Net info (optional)")){
-            return "Net status unknown.";
         }else {
             return text;
         }

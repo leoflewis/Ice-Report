@@ -25,7 +25,7 @@ public class IceDB {
         //attempt connection
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); Statement statement = conn.createStatement()){
             //create table in database, ensure required aspects contain valid input
-            String createTableSQL = "CREATE TABLE IF NOT EXISTS ice" + "(name TEXT NOT NULL, house BOOLEAN, net TEXT, water TEXT, " +
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS ice" + "(name TEXT NOT NULL, house BOOLEAN, net BOOLEAN, water TEXT, " +
                     "quality INTEGER NOT NULL CHECK(quality >= 1 AND quality <=10), address TEXT NOT NULL, hours TEXT, date TEXT NOT NULL, additional TEXT)";
             statement.executeUpdate(createTableSQL);
             //throw exception if connection failed
@@ -43,7 +43,7 @@ public class IceDB {
         try(Connection conn = DriverManager.getConnection(DB_CONNECTION_URL); PreparedStatement addICE = conn.prepareStatement(addIceSQL)){
             addICE.setString(1, ice.getName());
             addICE.setBoolean(2, ice.getWarmingHouse());
-            addICE.setString(3, ice.getNetStatus());
+            addICE.setBoolean(3, ice.getNetStatus());
             addICE.setString(4, ice.getWaterSource());
             addICE.setDouble(5, ice.getIceQuality());
             addICE.setString(6, ice.getAddress());
@@ -102,7 +102,7 @@ public class IceDB {
                 String name = rsALL.getString(NAME_COL);
                 int quality = (int) rsALL.getDouble(QUALITY_COL);
                 String address = rsALL.getString(ADDY_COL);
-                String nets = rsALL.getString(NET_COL);
+                boolean nets = rsALL.getBoolean(NET_COL);
                 String water = rsALL.getString(WATER_COL);
                 boolean house = rsALL.getBoolean(HOUSE_COL);
                 String hours = rsALL.getString(HOURS_COL);
