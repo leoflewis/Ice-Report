@@ -18,13 +18,16 @@ public class IceReportTwitter {
      */
      public static void tweet(String s) throws TwitterException {
          ConfigurationBuilder cb = new ConfigurationBuilder();
+         //configure authentication credentials
          cb.setDebugEnabled(true)
                  .setOAuthConsumerKey(OAUTH_CONSUMER_KEY)
                  .setOAuthConsumerSecret(OAUTH_CONSUMER_SECRET)
                  .setOAuthAccessToken(OAUTH_ACCESS_TOKEN)
                  .setOAuthAccessTokenSecret(OAUTH_ACCESS_TOKEN_SECRET);
+         //create twitter instance with set credentials
          TwitterFactory tf = new TwitterFactory(cb.build());
          Twitter twitter = tf.getInstance();
+         //pass string through twitter4j's update status method
          twitter.updateStatus(s);
      }
 
