@@ -1,3 +1,5 @@
+import twitter4j.TwitterException;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -181,7 +183,7 @@ public class IceReportGui extends JFrame{
                 //crate ice sheet with values
                 IceSheet iceSheetRecord;
                 String water = (String) waterSourceBox.getSelectedItem();
-                if(water.equals("Select water source (optional)")){  water = "Water source status unknown"; }
+                if(water.equals("Select water source (optional)")){  water = "Water source unknown"; }
                 String hours = hoursString(hoursTextField.getText());
                 String additionalInfo = addiInfoString(additionalInfoTextField.getText());
                 //attempt to create full ice sheet but if that fails create basic ice sheet
@@ -192,6 +194,12 @@ public class IceReportGui extends JFrame{
                 }
                 //add ice sheet to database and re-set text in gui form
                 String result = controller.addICEToDatabase(iceSheetRecord);
+                //attempt to tweet ice sheet
+                try {
+                    controller.tweetIceSheet(iceSheetRecord);
+                } catch (TwitterException ex) {
+                    ex.printStackTrace();
+                }
                 if (result.equals(IceDB.OK)){
                     nameTextField.setText("Name (required)");
                     addyTextField1.setText("Address (required)");
@@ -215,7 +223,7 @@ public class IceReportGui extends JFrame{
         if(text.equals("Additional Info (optional)")){
             return "";
         }else {
-            return text;
+            return text + ".";
         }
     }
 

@@ -9,29 +9,27 @@ import java.io.PrintStream;
 
 
 public class IceReportTwitter {
+    /**
+     * twitter dev account authentication credentials
+     */
+    public final static String OAUTH_CONSUMER_KEY = "9LWxvJr4mQCr9eX8WKUVdE3AF";
+    public final static String OAUTH_CONSUMER_SECRET = "HDcFSTxLMjaxswjyUmtLI75fVDUGjltS45ssxcNEEBRVrFa3Eb";
+    public final static String OAUTH_ACCESS_TOKEN = "1204591886750629889-1J34DkFtw3NrNQpchaKV0CyevCO3LD";
+    public final static String OAUTH_ACCESS_TOKEN_SECRET = "CHvpI8d10E9W9j8snl8Kco9PlWXCme48Sq8HHEOW7MF9J";
 
-
-     public static void main(String[] args) {
-         Twitter twitter;
-         try {
-             twitter = getTwitterinstance();
-
-             Status status = twitter.updateStatus("tweets");
-             twitter.tweets().updateStatus("tweet");
-         } catch (IllegalStateException | TwitterException e) {
-             e.printStackTrace();
-         }
-
+    /**
+     * method to build an instance of twitter and tweet a given string
+     */
+     public static void tweet(String s) throws TwitterException {
+         ConfigurationBuilder cb = new ConfigurationBuilder();
+         cb.setDebugEnabled(true)
+                 .setOAuthConsumerKey(OAUTH_CONSUMER_KEY)
+                 .setOAuthConsumerSecret(OAUTH_CONSUMER_SECRET)
+                 .setOAuthAccessToken(OAUTH_ACCESS_TOKEN)
+                 .setOAuthAccessTokenSecret(OAUTH_ACCESS_TOKEN_SECRET);
+         TwitterFactory tf = new TwitterFactory(cb.build());
+         Twitter twitter = tf.getInstance();
+         twitter.updateStatus(s);
      }
-    public static Twitter getTwitterinstance() throws TwitterException {
-        ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("9LWxvJr4mQCr9eX8WKUVdE3AF")
-                .setOAuthConsumerSecret("HDcFSTxLMjaxswjyUmtLI75fVDUGjltS45ssxcNEEBRVrFa3Eb ")
-                .setOAuthAccessToken("1204591886750629889-1J34DkFtw3NrNQpchaKV0CyevCO3LD")
-                .setOAuthAccessTokenSecret("CHvpI8d10E9W9j8snl8Kco9PlWXCme48Sq8HHEOW7MF9J");
-        TwitterFactory tf = new TwitterFactory(cb.build());
-        Twitter twitter = tf.getSingleton();
-        return twitter;
-    }
+
 }

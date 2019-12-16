@@ -153,7 +153,27 @@ public class IceSheet implements Comparable<IceSheet>{
      * format for twitter
      */
     public String toTwitter(){
-        return "On " + this.reportDate + " " + this.name + " was given a score of " + this.iceQuality + ". " + this.name + " is at " + this.address + this.getNetStatus() + " " + this.getHours() + " "  + this.getWaterSource() + " " + this.getAdditionalInfo();
+        return "On " + this.reportDate + " " + this.name +  " was given a score of " + this.iceQuality + ". " + this.name + " is at " + this.address + ". Hours are " + this.getHours() + ". " + this.name+ " is a "  + this.getWaterSource() + ". " + this.getAdditionalInfo() + " " + netString(this.netStatus) + " " + warminghouseString(this.warmingHouse);
+    }
+
+    /**
+     * returns a string about the warming house for the twitter method
+     */
+    public String warminghouseString(boolean house){
+        if(house){
+            return "There is a warming house.";
+        }
+        return "There is not a warming house.";
+    }
+
+    /**
+     *  returns a string about the hockey nets for the twitter method
+     */
+    public String netString(boolean net){
+        if(net){
+            return "There are hockey nets.";
+        }
+        return  "There are not hockey nets.";
     }
 
     /**

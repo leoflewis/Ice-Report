@@ -1,3 +1,5 @@
+import twitter4j.TwitterException;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -42,5 +44,12 @@ public class Controller {
      */
     String deleteIceFromDb(IceSheet ice){
         return db.deleteFromDB(ice);
+    }
+
+    /**
+     * method to send tweet from controller
+     */
+    void tweetIceSheet(IceSheet ice) throws TwitterException {
+        IceReportTwitter.tweet(ice.toTwitter());
     }
 }
