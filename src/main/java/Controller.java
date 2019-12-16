@@ -1,6 +1,4 @@
 import twitter4j.TwitterException;
-
-import java.util.Collections;
 import java.util.List;
 
 /**
