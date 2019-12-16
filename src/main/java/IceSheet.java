@@ -1,4 +1,3 @@
-import java.util.Date;
 
 /**
  * class modeling and outdoor ice sheet
