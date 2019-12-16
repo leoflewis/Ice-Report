@@ -232,7 +232,7 @@ public class IceReportGui extends JFrame{
      */
     private String hoursString(String text) {
         if(text.equals("Hours (optional)")){
-            return "Hours Unknown";
+            return "Unknown";
         }else {
             return text;
         }
