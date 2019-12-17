@@ -223,7 +223,7 @@ public class IceReportGui extends JFrame{
         if(text.equals("Additional Info (optional)")){
             return "";
         }else {
-            return text + ".";
+            return text + "";
         }
     }
 
