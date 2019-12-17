@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * this class create and maintains the gui form
- * @Author Leo Lewis
+ * Author Leo Lewis
  */
 public class IceReportGui extends JFrame{
     private JCheckBox warmingHouseCheckBox;
@@ -264,7 +264,7 @@ public class IceReportGui extends JFrame{
     /**
      * this method empties text field when they are clicked
      */
-    void emptyText(){
+    private void emptyText(){
         nameTextField.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {

@@ -4,9 +4,9 @@ import java.util.List;
 
 /**
  * this class creates and maintains database
- * @Author Leo Lewis
+ * Author Leo Lewis
  */
-public class IceDB {
+ class IceDB {
     private static final String DB_CONNECTION_URL =  "jdbc:sqlite:ice.sqlite";
     private static final String NAME_COL = "name";
     private static final String HOUSE_COL = "house";

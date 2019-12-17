@@ -3,10 +3,9 @@ import java.util.List;
 
 /**
  * this class operates the whole app
- * @Author Leo Lewis
+ * Author Leo Lewis
  */
 public class Controller {
-    private IceReportGui gui;
     private IceDB db;
 
     public static void main(String[] args){
@@ -19,7 +18,7 @@ public class Controller {
     private void startApp() {
         db = new IceDB();
         List<IceSheet> list = getAllData();
-        gui = new IceReportGui(this);
+        IceReportGui gui = new IceReportGui(this);
         gui.setListData(list);
     }
 

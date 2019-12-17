@@ -5,21 +5,21 @@ import twitter4j.conf.ConfigurationBuilder;
 
 /**
  * this class works with the twitter api to create an instance of twitter to send tweets
- * @Author Leo Lewis
+ * Author Leo Lewis
  */
 public class IceReportTwitter {
     /**
      * twitter dev account authentication credentials
      */
-    public final static String OAUTH_CONSUMER_KEY = "9LWxvJr4mQCr9eX8WKUVdE3AF";
-    public final static String OAUTH_CONSUMER_SECRET = "HDcFSTxLMjaxswjyUmtLI75fVDUGjltS45ssxcNEEBRVrFa3Eb";
-    public final static String OAUTH_ACCESS_TOKEN = "1204591886750629889-1J34DkFtw3NrNQpchaKV0CyevCO3LD";
-    public final static String OAUTH_ACCESS_TOKEN_SECRET = "CHvpI8d10E9W9j8snl8Kco9PlWXCme48Sq8HHEOW7MF9J";
+    private final static String OAUTH_CONSUMER_KEY = "9LWxvJr4mQCr9eX8WKUVdE3AF";
+    private final static String OAUTH_CONSUMER_SECRET = "HDcFSTxLMjaxswjyUmtLI75fVDUGjltS45ssxcNEEBRVrFa3Eb";
+    private final static String OAUTH_ACCESS_TOKEN = "1204591886750629889-1J34DkFtw3NrNQpchaKV0CyevCO3LD";
+    private final static String OAUTH_ACCESS_TOKEN_SECRET = "CHvpI8d10E9W9j8snl8Kco9PlWXCme48Sq8HHEOW7MF9J";
 
     /**
      * method to build an instance of twitter and tweet a given string
      */
-     public static void tweet(String s) throws TwitterException {
+     static void tweet(String s) throws TwitterException {
          ConfigurationBuilder cb = new ConfigurationBuilder();
          //configure authentication credentials
          cb.setDebugEnabled(true)

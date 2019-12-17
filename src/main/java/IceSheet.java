@@ -1,9 +1,9 @@
 
 /**
  * class modeling and outdoor ice sheet
- * @Author Leo Lewis
+ * Author Leo Lewis
  */
-public class IceSheet implements Comparable<IceSheet>{
+public class IceSheet{
     /**
      * name of ice sheet
      */
@@ -70,78 +70,42 @@ public class IceSheet implements Comparable<IceSheet>{
     /**
      * methods to get and set al instance variables of an ice sheet
      */
-    public String getName() {
+    String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean getWarmingHouse() {
+    
+    boolean getWarmingHouse() {
         return warmingHouse;
     }
-
-    public void setWarmingHouse(boolean warmingHouse) {
-        this.warmingHouse = warmingHouse;
-    }
-
-    public boolean getNetStatus() {
+    
+    boolean getNetStatus() {
         return netStatus;
     }
-
-    public void setNetStatus(boolean netStatus) {
-        this.netStatus = netStatus;
-    }
-
-    public String getWaterSource() {
+    
+    String getWaterSource() {
         return waterSource;
     }
-
-    public void setWaterSource(String waterSource) {
-        this.waterSource = waterSource;
-    }
-
-    public int getIceQuality() {
+    
+    int getIceQuality() {
         return iceQuality;
     }
-
-    public void setIceQuality(int iceQuality) {
-        this.iceQuality = iceQuality;
-    }
-
-    public String getAddress() {
+    
+    String getAddress() {
         return address;
     }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getHours() {
+    
+    String getHours() {
         return hours;
     }
-
-    public void setHours(String hours) {
-        this.hours = hours;
-    }
-
-    public String getReportDate() {
+    
+    String getReportDate() {
         return reportDate;
     }
-
-    public void setReportDate(String reportDate) {
-        this.reportDate = reportDate;
-    }
-
-    public String getAdditionalInfo() {
+    
+    String getAdditionalInfo() {
         return additionalInfo;
     }
-
-    public void setAdditionalInfo(String additionalInfo) {
-        this.additionalInfo = additionalInfo;
-    }
-
+    
     /**
      * toString method for IceSheet class, only displays aspects required in gui form
      */
@@ -175,16 +139,5 @@ public class IceSheet implements Comparable<IceSheet>{
         }
         return  "There are not hockey nets.";
     }
-
-    /**
-     * compares quality score of one ice sheet to another
-     */
-    @Override
-    public int compareTo(IceSheet o) {
-        if(o instanceof IceSheet){
-            IceSheet I = (IceSheet) o;
-            return o.getIceQuality() - this.iceQuality;
-        }
-        return -1;
-    }
+    
 }
