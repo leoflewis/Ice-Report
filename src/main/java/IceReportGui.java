@@ -231,7 +231,7 @@ public class IceReportGui extends JFrame{
      * method to replace default text from gui form with empty string
      */
     private String hoursString(String text) {
-        if(text.equals("Hours (optional)")){
+        if(text.equals("Hours (optional)") || text.equals("")){
             return "Unknown";
         }else {
             return text;
