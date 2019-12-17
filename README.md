@@ -6,6 +6,7 @@ The Ice-Report will ensure the user input is valid.
 The Ice-Report does not allow duplicates. The Ice-Report does not allow the user to edit an entry, it must be deleted an re-created.
 The Ice-Report sends entries from the database to a Twitter Account @mn_ice_report upon their addition. 
 The Ice-Report sorts the Ice Sheets the user enters by score with 10 being the best and displays them in a list.
+My thinking on scoring an ice sheet is what percentage of it is skate-able. If 70 percent of the ice is smooth then it should get a 7.  
 
 
 The Ice-Report has these features.
