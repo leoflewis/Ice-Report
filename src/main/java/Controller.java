@@ -3,6 +3,7 @@ import java.util.List;
 
 /**
  * this class operates the whole app
+ * @Author Leo Lewis
  */
 public class Controller {
     private IceReportGui gui;

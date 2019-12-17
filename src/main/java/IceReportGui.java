@@ -8,7 +8,10 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * this class create and maintains the gui form
+ * @Author Leo Lewis
+ */
 public class IceReportGui extends JFrame{
     private JCheckBox warmingHouseCheckBox;
     private JTextField nameTextField;

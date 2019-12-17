@@ -2,7 +2,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * this class creates and maintains database
+ * @Author Leo Lewis
+ */
 public class IceDB {
     private static final String DB_CONNECTION_URL =  "jdbc:sqlite:ice.sqlite";
     private static final String NAME_COL = "name";
@@ -15,8 +18,6 @@ public class IceDB {
     private static final String DATE_COL = "date";
     private static final String ADDI_COL = "additional";
     static final String OK = "ok";
-    static final String DUPLICATE = "Duplicate ice name";
-    static final int SQLITE_DUPLICATE_PRIMARY_KEY_CODE = 1;
 
     /**
      * creates the database
@@ -53,11 +54,7 @@ public class IceDB {
             addICE.execute();
             return OK;
         } catch (SQLException sqle){
-            if (sqle.getErrorCode() == SQLITE_DUPLICATE_PRIMARY_KEY_CODE){
-                return DUPLICATE;
-            } else {
-                throw new RuntimeException(sqle);
-            }
+            throw new RuntimeException(sqle);
         }
     }
 
@@ -78,11 +75,7 @@ public class IceDB {
             }
             //throw exception if connection to database unsuccessful
         } catch (SQLException e) {
-            if (e.getErrorCode() == SQLITE_DUPLICATE_PRIMARY_KEY_CODE){
-                return DUPLICATE;
-            } else {
-                throw new RuntimeException(e);
-            }
+            throw new RuntimeException(e);
         }
     }
 

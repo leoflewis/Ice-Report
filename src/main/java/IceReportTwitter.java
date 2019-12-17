@@ -3,7 +3,10 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
-
+/**
+ * this class works with the twitter api to create an instance of twitter to send tweets
+ * @Author Leo Lewis
+ */
 public class IceReportTwitter {
     /**
      * twitter dev account authentication credentials

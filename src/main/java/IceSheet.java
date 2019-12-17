@@ -1,6 +1,7 @@
 
 /**
  * class modeling and outdoor ice sheet
+ * @Author Leo Lewis
  */
 public class IceSheet implements Comparable<IceSheet>{
     /**
